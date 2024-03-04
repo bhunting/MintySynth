@@ -121,15 +121,14 @@ unsigned long instrumentTimer;                // used to tell us when to pause t
 byte MIDIstate = 0;                           // 0 is MIDI off, 1 is baud rate 115200, and 2 is baud rate 31250
 
 // Adafruit Button Checker http://www.adafruit.com/blog/2009/10/20/example-code-for-multi-button-checker-with-debouncing/
-#define DEBOUNCE 10                                                                                                             // button debouncer, how many ms to debounce, 5+ ms is usually plenty
-byte buttons[] = {                                                                                                              // here is where we define the buttons that we'll use. button "0" is the first, button "5" is the 6th, etc
-    5, 7, 11, 8, 10};                                                                                                           // button pins
-#define NUMBUTTONS sizeof(buttons)                                                                                              // This handy macro lets us determine how big the array up above is, by checking the size
+#define DEBOUNCE 10                       // button debouncer, how many ms to debounce, 5+ ms is usually plenty
+byte buttons[] = { 5, 7, 11, 8, 10};      // here is where we define the buttons that we'll use. button "0" is the first, 
+                                          // button "5" is the 6th, etc button pins
+#define NUMBUTTONS sizeof(buttons)        // This handy macro lets us determine how big the array up above is, by checking the size
 byte pressed[NUMBUTTONS], justpressed[NUMBUTTONS], justreleased[NUMBUTTONS], longpress[NUMBUTTONS], extralongpress[NUMBUTTONS]; // we will track if a button is just pressed, just released, or 'currently pressed'
 
 void setup()
 {
-
   DIDR0 = 0x3F; // disable the digital input buffers on the analog pins to save a bit of power and reduce noise.
 
   edgar.begin(CHB); // start the synth with output on Pin 3
@@ -149,7 +148,6 @@ void setup()
 
   if (pressed[0])
   {
-
     Current = 0; // if button 0 is held during startup we start in Live Mode, playing the demo song. Otherwise we'll be in Program Mode 0.
     Swing = 16;
     stepLength = 168;
@@ -186,7 +184,6 @@ void setup()
 
 void loop()
 {
-
   check_switches(); // we check these frequently so we don't miss a button press.
 
   for (int i = 0; i < 4; i++)
@@ -594,10 +591,8 @@ void loop()
 
     for (int j = 0; j < 4; j++)
     {
-
       if (sequMode && longpress[i] && livePots[j])
       {
-
         if (scaleNumber == 0)
         {
           song[2][programMode][((4 * i) + j)] = constrain((map((POT[j]), 0, 1023, 18, 109)), 18, 108);
@@ -624,7 +619,6 @@ void loop()
 
   if (sequMode && livePots[4])
   {
-
     scaleNumber = constrain((map((POT[4]), 0, 1023, 0, 9)), 0, 8); // set the scale with pot4 if we're in sequMode.
 
     pause = 1;     // pause the step timer while we're playing sample scale notes
@@ -729,7 +723,6 @@ void loop()
 
   if (programMode < 4 && !sequMode)
   { // if we're in Program mode but not Sequence Mode, use the pots to select the voice parameters and write them to the userPrefa array.
-
     if (livePots[1])
     {
       voicePrefs[2][programMode][1] = userPitch;

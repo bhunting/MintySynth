@@ -199,7 +199,6 @@ void lock_pots()
 
 void get_pots()
 {
-
   for (int i = 0; i < 5; i++)
   {
 
@@ -219,7 +218,6 @@ void get_pots()
 
 void check_battery()
 {
-
   if (version == 2)
   { // this first part is the battery checker for MintySynth rev. 2.0 and higher.
     long result;
@@ -235,7 +233,6 @@ void check_battery()
 
     if (result <= 2200)
     { // if the batteries are low, pause the music and blink the LEDs a few times.
-
       edgar.suspend();
 
       for (int i = 0; i < 7; i++)
@@ -253,7 +250,6 @@ void check_battery()
       }
     }
   }
-
   else
   {
     // this is the battery checker for MintySynth rev. 1.3 and earlier.
@@ -315,10 +311,8 @@ void check_battery()
 
 void flash_leds()
 {
-
   if (programMode == 4)
   {
-
     if (thisStep == 0 || thisStep == 4 || thisStep == 8 || thisStep == 12)
     {                    // turn on LED 2 for the 1st, 4th, 8th, and 12th steps in the sequence if we're in Live Mode.
       PORTD |= _BV(PD4); // LED 2 (direct port manipulation)
@@ -328,7 +322,6 @@ void flash_leds()
 
   if (programMode < 4)
   { // turn on LED 1 for the 1st, 4th, 8th, and 12th steps in the sequence if we're in Program Mode.
-
     if (thisStep == 0 || thisStep == 4 || thisStep == 8 || thisStep == 12)
     {
       PORTD |= _BV(PD2);
@@ -345,7 +338,6 @@ void flash_leds()
 
 void save(int bank)
 {
-
   edgar.suspend();
 
   PORTD &= ~_BV(PD2); // make sure the LEDs are off
@@ -362,7 +354,6 @@ void save(int bank)
 
   for (int i = 0; i < 4; i++)
   {
-
     for (int j = 0; j < 7; j++)
     {
 
@@ -374,7 +365,6 @@ void save(int bank)
 
   for (int i = 0; i < 4; i++)
   {
-
     for (int j = 0; j < 16; j++)
     {
 
@@ -393,7 +383,6 @@ void save(int bank)
 
 void load(int bank)
 {
-
   edgar.suspend();
   for (int i = 0; i < 4; i++)
   {
@@ -413,7 +402,6 @@ void load(int bank)
 
   for (int i = 0; i < 4; i++)
   {
-
     for (int j = 0; j < 7; j++)
     {
 
@@ -425,7 +413,6 @@ void load(int bank)
 
   for (int i = 0; i < 4; i++)
   {
-
     for (int j = 0; j < 16; j++)
     {
 
@@ -472,7 +459,6 @@ void append(int bank)
 
   for (int i = 0; i < 4; i++)
   {
-
     for (int j = 0; j < 7; j++)
     {
 
@@ -484,7 +470,6 @@ void append(int bank)
 
   for (int i = 0; i < 4; i++)
   {
-
     for (int j = 0; j < 16; j++)
     {
 
