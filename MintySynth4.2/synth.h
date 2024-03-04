@@ -22,15 +22,15 @@
 #define SQUARE     3
 #define NOISE     4
 #define SAW   5
-#define A     6 //waves A-F added by AM 2015
-#define B     7
-#define C     8
-#define D     9
-#define E     10
-#define F     11
-#define G     12
-#define H     13
-#define I     14
+#define wave_A     6 //waves A-F added by AM 2015
+#define wave_B     7
+#define wave_C     8
+#define wave_D     9
+#define wave_E     10
+#define wave_F     11
+#define wave_G     12
+#define wave_H     13
+#define wave_I     14
 
 #define ENVELOPE0 0
 #define ENVELOPE1 1
@@ -255,28 +255,28 @@ public:
     case NOISE:
       wavs[voice] = (unsigned int)NoiseTable;
       break;
-    case A:
+    case wave_A:
       wavs[voice] = (unsigned int)ATable;
       break;
-    case B:
+    case wave_B:
       wavs[voice] = (unsigned int)BTable;
       break;
-    case C:
+    case wave_C:
       wavs[voice] = (unsigned int)CTable;
       break;
-    case D:
+    case wave_D:
       wavs[voice] = (unsigned int)DTable;
       break;
-    case E:
+    case wave_E:
       wavs[voice] = (unsigned int)ETable;
       break;
-    case F:
+    case wave_F:
       wavs[voice] = (unsigned int)FTable;
       break;
-    case G:
+    case wave_G:
       wavs[voice] = (unsigned int)GTable;
       break;
-    case H:
+    case wave_H:
       wavs[voice] = (unsigned int)HTable;
       break;
     default:
